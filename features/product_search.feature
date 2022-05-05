@@ -5,7 +5,13 @@ Feature: Rakuten product search
   Scenario: create a new user
     Given user opens rakuten url for registration
     When user enters valid details
-    Then user is registered successfully
+    And user is registered successfully
+    Then search box is displayed on landing page
+
+    Scenario: verify search text box is shown on landing page
+    Given a registered user
+    When login is successful
+    Then search text box is shown
 
   Scenario: verify search text box is shown on landing page
     Given a registered rakuten user
