@@ -43,5 +43,5 @@ WebDriverWait(driver,5).until(EC.element_to_be_clickable
 driver.find_element(By.ID,"//input[@id='desktop-search-input']").is_displayed()
 time.sleep(100)
 # b.perform()
-WebDriverWait(driver,5).until(EC.visibility_of_element_located("//*[@id='scrollingLayer']/div[2]/div[6]")).is_displayed()
-
+element = WebDriverWait(driver,5).until(EC.visibility_of_element_located("//*[@id='scrollingLayer']/div[2]/div[6]"))
+driver.current_url
