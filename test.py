@@ -44,4 +44,5 @@ driver.find_element(By.ID,"//input[@id='desktop-search-input']").is_displayed()
 time.sleep(100)
 # b.perform()
 element = WebDriverWait(driver,5).until(EC.visibility_of_element_located("//*[@id='scrollingLayer']/div[2]/div[6]"))
-driver.current_url
+a = driver.find_element(By.ID,"//input[@id='desktop-search-input']")
+a.send_keys()

@@ -1,6 +1,9 @@
+import time
+
 from behave import *
 from pages.Login import Login
 from pages.LandingPage import LandingPage
+from pages.ResultsPage import Results
 # use_step_matcher("re")
 
 
@@ -59,6 +62,7 @@ def step_impl(context,product):
     :type context: behave.runner.Context
     """
     context.landing_page = LandingPage(context.driver)
+    context.landing_page.click_no_for_notifications()
     context.landing_page.search_for_product(product_name=product)
 
 
@@ -70,5 +74,15 @@ def step_impl(context,search_text):
     """
     # actual_url = context.driver.current_url
     # assert actual_url.count(search_text) > 0
-    print(context.landing_page.check_for_search_results_text(search_text))
-    assert context.landing_page.check_for_search_results_text(search_text) is True
+    context.results_page = Results(context.driver)
+    # context.results_page.click_no_for_notifications()
+    actual_search_text_available = context.results_page.check_for_search_results_text(search_text)
+    print(actual_search_text_available)
+    # print(context.landing_page.check_for_search_results_text(search_text))
+    # time.sleep(200)
+    # assert context.landing_page.check_for_search_results_text(search_text) is True
+    list_of_sellers_prices = context.results_page.find_products()
+    print(list_of_sellers_prices)
+    for i in list_of_sellers_prices:
+        assert i[1] is not None
+    assert actual_search_text_available is True

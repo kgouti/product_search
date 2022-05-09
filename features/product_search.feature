@@ -21,7 +21,10 @@ Feature: Rakuten product search
   Scenario: Verify search url contains keyword "search-results"
     Given user logs into rakuten profile
     When iphone is searched in the search text box
-#    And user presses enter button
     Then verify that new page url contains keyword search-results
 
   Scenario: Print seller and price of each product to console
+    Given user logs into rakuten profile
+    When iphone is searched in the search text box
+    Then verify price is available for each card
+    And print seller and the price of each product
