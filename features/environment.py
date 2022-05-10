@@ -29,6 +29,6 @@ def open_url(context):
 
 
 
-# def after_scenario(context, scenario):
-#     print('++++Scenario {} ends +++++'.format(scenario.name))
-#     # context.driver.close()
+def after_scenario(context, scenario):
+    print('++++Scenario {} ends +++++'.format(scenario.name))
+    context.driver.close()
