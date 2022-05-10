@@ -17,6 +17,7 @@ class landing:
     search_button = (By.XPATH,"//i[@class='icon icon--search ']")
     search_results_text = (By.XPATH,"//div[@id='__next']/main/nav/ul/li[2]/a/div")
     search_results_text1 = (By.XPATH,"//h3[@class='search-results_searchResults__title__cOoGR']")
+    see_all = (By.XPATH,"//div[@class='extended-search-bar_extendedSearchBar__options__jmFks']")
 
 class search:
     z = "//div[@class='card-product-search_cardProductSearch__HC_DF']"

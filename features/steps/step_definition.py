@@ -1,10 +1,7 @@
-import time
-
-from behave import *
+from behave import given,when,then,step
 from pages.Login import Login
 from pages.LandingPage import LandingPage
 from pages.ResultsPage import Results
-# use_step_matcher("re")
 
 
 @given("user opens rakuten url for registration")
@@ -75,14 +72,26 @@ def step_impl(context,search_text):
     # actual_url = context.driver.current_url
     # assert actual_url.count(search_text) > 0
     context.results_page = Results(context.driver)
-    # context.results_page.click_no_for_notifications()
     actual_search_text_available = context.results_page.check_for_search_results_text(search_text)
     print(actual_search_text_available)
-    # print(context.landing_page.check_for_search_results_text(search_text))
-    # time.sleep(200)
-    # assert context.landing_page.check_for_search_results_text(search_text) is True
-    list_of_sellers_prices = context.results_page.find_products()
-    print(list_of_sellers_prices)
-    for i in list_of_sellers_prices:
-        assert i[1] is not None
     assert actual_search_text_available is True
+
+
+@then("verify price is available for each card")
+def step_impl(context):
+    """
+    :type context: behave.runner.Context
+    """
+    context.results_page = Results(context.driver)
+    context.list_of_sellers_prices = context.results_page.find_products()
+
+    for i in context.list_of_sellers_prices:
+        assert i[1] is not None
+
+
+@step("print seller and the price of each product")
+def step_impl(context):
+    """
+    :type context: behave.runner.Context
+    """
+    print(context.list_of_sellers_prices)

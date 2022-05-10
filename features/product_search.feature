@@ -8,16 +8,6 @@ Feature: Rakuten product search
     And user is registered successfully
     Then search box is displayed on landing page
 
-#    Scenario: verify search text box is shown on landing page
-#    Given a registered user
-#    When login is successful
-#    Then search text box is shown
-#
-#  Scenario: verify search text box is shown on landing page
-#    Given a registered rakuten user
-#    When login is successful
-#    Then search text box is shown
-
   Scenario: Verify search url contains keyword "search-results"
     Given user logs into rakuten profile
     When iphone is searched in the search text box
